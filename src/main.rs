@@ -6,8 +6,13 @@ struct Message {
     content: String,
 }
 
+#[get("/")]
+fn index() -> &'static str {
+    "Hello, world!"
+}
+
 #[post("/", format = "json", data = "<message>")]
-fn index(message: Json<Message>) -> Json<Message> {
+fn post_message(message: Json<Message>) -> Json<Message> {
     Json(Message {
         content: format!("Received: {}", message.content),
     })
@@ -15,6 +20,6 @@ fn index(message: Json<Message>) -> Json<Message> {
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+    rocket::build().mount("/", routes![index, post_message])
 }
 
