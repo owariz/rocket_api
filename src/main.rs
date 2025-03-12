@@ -22,4 +22,3 @@ fn post_message(message: Json<Message>) -> Json<Message> {
 fn rocket() -> _ {
     rocket::build().mount("/", routes![index, post_message])
 }
-
