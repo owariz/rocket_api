@@ -2,6 +2,8 @@
 use rocket::serde::{json::{Json, Value}, Deserialize, Serialize};
 use serde_json::json;
 
+pun mod config
+
 #[derive(Serialize, Deserialize)]
 struct Message {
     content: String,
